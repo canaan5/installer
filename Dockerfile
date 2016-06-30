@@ -3,30 +3,26 @@
 ##   $ docker build -t canaan5-installer .
 ##
 ## RUNNING
-##   $ docker run -p 9000:9000 canaan5-installer
+##   $ docker run -p 80:80 canaan5-installer
 ##
 ## CONNECTING
 ##   Lookup the IP of your active docker host using:
 ##     $ docker-machine ip $(docker-machine active)
-##   Connect to the container at DOCKER_IP:9000
+##   Connect to the container at DOCKER_IP:80
 ##     replacing DOCKER_IP for the IP of your active docker host
+##
+## NOTES
+##   This is a prebuilt version of Apache.
+##   For more information and documentation visit:
+##     https://github.com/bitnami/bitnami-docker-apache
 
-FROM gcr.io/stacksmith-images/ubuntu:14.04-r07
+FROM gcr.io/bitnami-containers/apache:2.4.20-r0
 
-MAINTAINER Bitnami <containers@bitnami.com>
+LABEL com.bitnami.stacksmith.id="mpkcssu" \
+      com.bitnami.stacksmith.name="canaan5/installer"
 
-ENV STACKSMITH_STACK_ID="i923h14" \
+ENV STACKSMITH_STACK_ID="mpkcssu" \
     STACKSMITH_STACK_NAME="canaan5/installer" \
-    STACKSMITH_STACK_PRIVATE="1"
+    STACKSMITH_STACK_PRIVATE="1" \
+    BITNAMI_CONTAINER_ORIGIN="stacksmith"
 
-RUN bitnami-pkg install php-5.6.23-0 --checksum 21f1d65e6f0721cbbad452ace681c5b1a41dec8aabe568140313dce045a0d537
-
-ENV PATH=/opt/bitnami/php/bin:$PATH
-
-## STACKSMITH-END: Modifications below this line will be unchanged when regenerating
-
-# PHP base template
-COPY . /app
-WORKDIR /app
-
-CMD ["php", "-a"]
