@@ -18,10 +18,10 @@
 
 FROM gcr.io/bitnami-containers/apache:2.4.20-r0
 
-LABEL com.bitnami.stacksmith.id="mpkcssu" \
+LABEL com.bitnami.stacksmith.id="7gsigoe" \
       com.bitnami.stacksmith.name="canaan5/installer"
 
-ENV STACKSMITH_STACK_ID="mpkcssu" \
+ENV STACKSMITH_STACK_ID="7gsigoe" \
     STACKSMITH_STACK_NAME="canaan5/installer" \
     STACKSMITH_STACK_PRIVATE="1" \
     BITNAMI_CONTAINER_ORIGIN="stacksmith"
